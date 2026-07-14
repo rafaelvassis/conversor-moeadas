@@ -1,13 +1,28 @@
-import { useState } from "react";
-import "./ConverterForm.css";
 import { convertCurrency } from "../../services/exchangeApi";
 import type { ExchangeRateResponse } from "../../types/ExchangeRate";
+import "./ConverterForm.css";
 
-export default function ConverterForm() {
-  const [amount, setAmount] = useState<number>(0);
-  const [sourceCurrency, setSourceCurrency] = useState<string>("USD");
-  const [targetCurrency, setTargetCurrency] = useState<string>("BRL");
+type ConverterFormProps = {
+  amount: number;
+  sourceCurrency: string;
+  targetCurrency: string;
+  setAmount: (a: number) => void;
+  setSourceCurrency: (s: string) => void;
+  setTargetCurrency: (s: string) => void;
+  setResult: (r: number) => void;
+  setDate: (d: string) => void;
+};
 
+export default function ConverterForm({
+  amount,
+  setAmount,
+  sourceCurrency,
+  setSourceCurrency,
+  targetCurrency,
+  setTargetCurrency,
+  setResult,
+  setDate,
+}: ConverterFormProps) {
   function handleSwapCurrencies(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     const currentSource = sourceCurrency;
@@ -28,9 +43,8 @@ export default function ConverterForm() {
       targetCurrency,
     );
 
-
-    console.log(data);
-    // Falta implementar o que fazer com o retorno da chamada da API
+    setResult(amount * data.rate);
+    setDate(data.date);
   }
 
   return (
