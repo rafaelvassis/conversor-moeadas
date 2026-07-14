@@ -1,8 +1,17 @@
 import "./ConverterForm.css";
 
 export default function ConverterForm() {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    console.log("clicou em trocar");
+  }
+
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log("clicou em converter");
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="form__row">
         <label htmlFor="Source-Amount">Valor</label>
         <input
@@ -15,15 +24,16 @@ export default function ConverterForm() {
       </div>
       <div className="form__row">
         <label htmlFor="Base-Currency">De: </label>
-        <select>
+        <select id="Base-Currency">
           <option>USD</option>
           <option>BRL</option>
           <option>EUR</option>
         </select>
       </div>
+      <button type="button" onClick={handleClick}>⇅</button>
       <div className="form__row">
         <label htmlFor="Quote-Currency">Para: </label>
-        <select>
+        <select id="Quote-Currency">
           <option>USD</option>
           <option>BRL</option>
           <option>EUR</option>
