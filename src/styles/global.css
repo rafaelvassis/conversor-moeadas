@@ -10,4 +10,5 @@ body {
   align-items: center;
   min-height: 100vh;
   font-family: "Segoe UI", system-ui, sans-serif;
+  padding: 3rem;
 }
