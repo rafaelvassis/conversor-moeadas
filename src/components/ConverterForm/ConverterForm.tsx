@@ -12,7 +12,6 @@ type ConverterFormProps = {
   setTargetCurrency: (s: string) => void;
   setExchangeRate: (r: ExchangeRateResponse) => void;
   setError: (err: string | null) => void;
-  error: string | null;
 };
 
 export default function ConverterForm({
@@ -24,7 +23,6 @@ export default function ConverterForm({
   setTargetCurrency,
   setExchangeRate,
   setError,
-  error,
 }: ConverterFormProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -53,7 +51,7 @@ export default function ConverterForm({
 
       setExchangeRate(data);
       setError(null);
-    } catch {
+    } catch (error) {
       console.error(error);
       setError("Não foi possível obter a cotação. Tente novamente.");
     } finally {

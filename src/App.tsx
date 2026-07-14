@@ -27,7 +27,6 @@ function App() {
         setTargetCurrency={setTargetCurrency}
         setExchangeRate={setExchangeRate}
         setError={setError}
-        error={error}
       />
       {error && <FeedbackMessage message={error} />}
       <ResultCard
