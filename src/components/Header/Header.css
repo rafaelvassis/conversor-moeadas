@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    flex-direction: column;
+    border: solid, 1px, black;
+    padding: 2rem;
+    color: rgb(163, 139, 1);
+}
+
+.header__title {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__subtitle {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(106, 157, 29);
+}
