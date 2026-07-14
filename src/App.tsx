@@ -3,13 +3,14 @@ import ConverterForm from "./components/ConverterForm/ConverterForm";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ResultCard from "./components/ResultCard/ResultCard";
+import type { ExchangeRateResponse } from "./types/ExchangeRate";
 
 function App() {
   const [amount, setAmount] = useState<number>(0);
   const [sourceCurrency, setSourceCurrency] = useState<string>("USD");
   const [targetCurrency, setTargetCurrency] = useState<string>("BRL");
-  const [result, setResult] = useState<number>(0);
-  const [date, setDate] = useState<string>("__/__/____");
+  const [exchangeRate, setExchangeRate] =
+    useState<ExchangeRateResponse | null>(null);
 
   return (
     <>
@@ -21,15 +22,13 @@ function App() {
         setSourceCurrency={setSourceCurrency}
         targetCurrency={targetCurrency}
         setTargetCurrency={setTargetCurrency}
-        setResult={setResult}
-        setDate={setDate}
+        setExchangeRate={setExchangeRate}
       />
       <ResultCard
         amount={amount}
         sourceCurrency={sourceCurrency}
         targetCurrency={targetCurrency}
-        result={result}
-        date={date}
+        exchangeRate={exchangeRate}
       />
       <Footer />
     </>

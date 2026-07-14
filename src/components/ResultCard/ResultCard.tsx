@@ -1,20 +1,21 @@
+import type { ExchangeRateResponse } from "../../types/ExchangeRate";
 import "./ResultCard.css";
 
 type ResultCardProps = {
   amount: number;
   sourceCurrency: string;
   targetCurrency: string;
-  result: number;
-  date: string;
+  exchangeRate: ExchangeRateResponse | null;
 };
 
 export default function ResultCard({
   amount,
   sourceCurrency,
   targetCurrency,
-  result,
-  date,
+  exchangeRate,
 }: ResultCardProps) {
+  const convertedAmount = exchangeRate ? amount * exchangeRate.rate : 0;
+
   return (
     <div className="card__container">
       <div>
@@ -26,12 +27,12 @@ export default function ResultCard({
       <div>
         <p className="label__output">Valor Convertido</p>
         <p className="text__output">
-          {targetCurrency} {result}
+          {targetCurrency} {amount * convertedAmount}
         </p>
       </div>
       <div>
         <p className="label__output">Data da consulta</p>
-        <p className="text__output">{date}</p>
+        <p className="text__output">{exchangeRate?.date}</p>
       </div>
     </div>
   );
