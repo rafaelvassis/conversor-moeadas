@@ -1,5 +1,7 @@
 import { useState } from "react";
-import "./ConverterForm.css"
+import "./ConverterForm.css";
+import { convertCurrency } from "../../services/exchangeApi";
+import type { ExchangeRateResponse } from "../../types/ExchangeRate";
 
 export default function ConverterForm() {
   const [amount, setAmount] = useState<number>(0);
@@ -14,15 +16,21 @@ export default function ConverterForm() {
     setTargetCurrency(currentSource);
   }
 
-  function handleConvert(e: React.SubmitEvent<HTMLFormElement>) {
+  async function handleConvert(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (amount <= 0) {
       return;
     }
-    console.log(
-      `Convertendo ${amount} de ${sourceCurrency} para ${targetCurrency}`,
+
+    const data: ExchangeRateResponse = await convertCurrency(
+      sourceCurrency,
+      targetCurrency,
     );
+
+
+    console.log(data);
+    // Falta implementar o que fazer com o retorno da chamada da API
   }
 
   return (
