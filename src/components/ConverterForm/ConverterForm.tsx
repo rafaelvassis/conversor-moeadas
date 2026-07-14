@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ConverterForm.css"
 
 export default function ConverterForm() {
   const [amount, setAmount] = useState<number>(0);
