@@ -64,6 +64,7 @@ export default function ConverterForm({
       <div className="converter-form__group">
         <label htmlFor="sourceAmount">Valor</label>
         <input
+          disabled={isLoading}
           type="number"
           min="0"
           step="0.01"
@@ -77,6 +78,7 @@ export default function ConverterForm({
       <div className="converter-form__group">
         <label htmlFor="sourceCurrency">De: </label>
         <select
+          disabled={isLoading}
           id="sourceCurrency"
           value={sourceCurrency}
           onChange={(e) => setSourceCurrency(e.target.value)}
@@ -88,6 +90,7 @@ export default function ConverterForm({
       </div>
 
       <button
+        disabled={isLoading}
         type="button"
         className="converter-form__swap-btn"
         onClick={handleSwapCurrencies}
@@ -98,6 +101,7 @@ export default function ConverterForm({
       <div className="converter-form__group">
         <label htmlFor="targetCurrency">Para: </label>
         <select
+          disabled={isLoading}
           id="targetCurrency"
           value={targetCurrency}
           onChange={(e) => setTargetCurrency(e.target.value)}
@@ -108,8 +112,12 @@ export default function ConverterForm({
         </select>
       </div>
 
-      <button type="submit" className="converter-form__submit-btn">
-        Converter
+      <button
+        type="submit"
+        className="converter-form__submit-btn"
+        disabled={isLoading}
+      >
+        {isLoading ? "Convertendo..." : "Converter"}
       </button>
     </form>
   );
