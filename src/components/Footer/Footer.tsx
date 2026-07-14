@@ -1,11 +1,12 @@
 import "./Footer.css";
+import mascot from "/src/assets/img/bear_transparent.png";
 
 function Footer() {
   return (
     <div>
       <div className="credits">
         <p>
-          <img src="src/assets/img/bear_transparent.png" width="50" alt="Bear Logo" />
+          <img src={mascot} width="50" alt="Bear Logo" />
         </p>
 
         <p>
