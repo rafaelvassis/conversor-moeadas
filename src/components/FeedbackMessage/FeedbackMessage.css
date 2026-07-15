@@ -1,16 +1,22 @@
-.error{
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
 
-    background:#fee2e2;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
-    color:#b91c1c;
-
-    border:1px solid #fecaca;
-
-    border-radius:12px;
-
-    padding:16px;
-
-    font-weight:600;
-
-    text-align:center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
