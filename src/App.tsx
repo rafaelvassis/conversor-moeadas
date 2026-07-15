@@ -1,19 +1,24 @@
-import { useState } from "react";
 import ConverterForm from "./components/ConverterForm/ConverterForm";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ResultCard from "./components/ResultCard/ResultCard";
-import type { ExchangeRateResponse } from "./types/ExchangeRate";
 import FeedbackMessage from "./components/FeedbackMessage/FeedbackMessage";
+import { useCurrencyConverter } from "./hooks/useCurrencyConverter";
 
 function App() {
-  const [amount, setAmount] = useState<number>(0);
-  const [sourceCurrency, setSourceCurrency] = useState<string>("USD");
-  const [targetCurrency, setTargetCurrency] = useState<string>("BRL");
-  const [exchangeRate, setExchangeRate] = useState<ExchangeRateResponse | null>(
-    null,
-  );
-  const [error, setError] = useState<string | null>(null);
+  const {
+    amount,
+    sourceCurrency,
+    targetCurrency,
+    exchangeRate,
+    error,
+
+    setAmount,
+    setSourceCurrency,
+    setTargetCurrency,
+    setExchangeRate,
+    setError,
+  } = useCurrencyConverter();
 
   function handleAmountChange(value: number) {
     setAmount(value);
