@@ -1,18 +1,15 @@
-.credits {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+.credits{
 
-  padding: 12px;
+    text-align:center;
 
-  border-radius: 12px;
+    color:#6b7280;
 
-  background: rgba(255,255,255,.65);
+    font-size:.9rem;
 
-  backdrop-filter: blur(6px);
+    padding-bottom:12px;
 }
 
-.credits strong {
-  color: #333;
+.credits strong{
+
+    color:#2563eb;
 }

@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import ResultCard from "./components/ResultCard/ResultCard";
 import FeedbackMessage from "./components/FeedbackMessage/FeedbackMessage";
 import { useCurrencyConverter } from "./hooks/useCurrencyConverter";
+import "./App.css"
 
 function App() {
   const {
@@ -22,7 +23,7 @@ function App() {
   } = useCurrencyConverter();
 
   return (
-    <>
+    <div className="app">
       <Header />
       <ConverterForm
         amount={amount}
@@ -43,7 +44,7 @@ function App() {
         exchangeRate={exchangeRate}
       />
       <Footer />
-    </>
+    </div>
   );
 }
 

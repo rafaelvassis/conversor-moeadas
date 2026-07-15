@@ -5,10 +5,12 @@
 }
 
 body {
+  background: #f5f7fb;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #1f2937;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  padding: 3rem;
+
+  padding: 48px 20px;
 }
