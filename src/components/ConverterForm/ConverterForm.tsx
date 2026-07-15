@@ -1,18 +1,18 @@
+import type { Currency } from "../../types/Currency";
 import "./ConverterForm.css";
-import { currencies } from "../../data/currencies";
 
 type ConverterFormProps = {
   amount: number;
   sourceCurrency: string;
   targetCurrency: string;
   isLoading: boolean;
+  currencies: Currency[];
 
   onAmountChange: (value: number) => void;
   onSourceCurrencyChange: (currency: string) => void;
   onTargetCurrencyChange: (currency: string) => void;
   onSwapCurrencies: () => void;
   onConvert: () => Promise<void>;
-  
 };
 
 export default function ConverterForm({
@@ -25,8 +25,8 @@ export default function ConverterForm({
   onSwapCurrencies,
   isLoading,
   onConvert,
+  currencies,
 }: ConverterFormProps) {
-
   async function handleConvert(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     await onConvert();
@@ -56,9 +56,9 @@ export default function ConverterForm({
           value={sourceCurrency}
           onChange={(e) => onSourceCurrencyChange(e.target.value)}
         >
-          {currencies.map(({ code, name }) => (
-            <option key={code} value={code}>
-              {code} - {name}
+          {currencies.map(({ iso_code, name }) => (
+            <option key={iso_code} value={iso_code}>
+              {iso_code} - {name}
             </option>
           ))}
         </select>
@@ -81,9 +81,9 @@ export default function ConverterForm({
           value={targetCurrency}
           onChange={(e) => onTargetCurrencyChange(e.target.value)}
         >
-          {currencies.map(({ code, name }) => (
-            <option key={code} value={code}>
-              {code} - {name}
+          {currencies.map(({ iso_code, name }) => (
+            <option key={iso_code} value={iso_code}>
+              {iso_code} - {name}
             </option>
           ))}
         </select>

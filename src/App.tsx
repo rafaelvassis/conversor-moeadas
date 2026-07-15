@@ -14,6 +14,7 @@ function App() {
     exchangeRate,
     error,
     isLoading,
+    currencies,
 
     handleAmountChange,
     handleSourceCurrencyChange,
@@ -35,6 +36,7 @@ function App() {
         onTargetCurrencyChange={handleTargetCurrencyChange}
         onSwapCurrencies={handleSwapCurrencies}
         onConvert={handleConvert}
+        currencies={currencies}
       />
       {error && <FeedbackMessage message={error} />}
       <ResultCard

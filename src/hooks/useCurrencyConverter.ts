@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ExchangeRateResponse } from "../types/ExchangeRate";
-import { convertCurrency } from "../services/exchangeApi";
+import type { Currency } from "../types/Currency";
+import { convertCurrency, getCurrencies } from "../services/exchangeApi";
 
 export function useCurrencyConverter() {
   const [amount, setAmount] = useState(0);
@@ -11,6 +12,21 @@ export function useCurrencyConverter() {
   );
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+
+  useEffect(() => {
+    async function loadCurrencies() {
+      try {
+        const data = await getCurrencies();
+        setCurrencies(data);
+      } catch (error) {
+        console.error(error);
+        setError("Não foi possível carregar a lista de moedas.");
+      }
+    }
+
+    loadCurrencies();
+  }, [setError]);
 
   function handleAmountChange(value: number) {
     setAmount(value);
@@ -74,6 +90,7 @@ export function useCurrencyConverter() {
     exchangeRate,
     error,
     isLoading,
+    currencies,
 
     handleAmountChange,
     handleSourceCurrencyChange,
