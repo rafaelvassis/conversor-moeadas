@@ -10,7 +10,7 @@ type ConverterFormProps = {
   setAmount: (a: number) => void;
   setSourceCurrency: (s: string) => void;
   setTargetCurrency: (s: string) => void;
-  setExchangeRate: (r: ExchangeRateResponse) => void;
+  setExchangeRate: (r: ExchangeRateResponse | null) => void;
   setError: (err: string | null) => void;
 };
 
@@ -37,12 +37,20 @@ export default function ConverterForm({
   async function handleConvert(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    setError(null);
     if (amount <= 0) {
+      setExchangeRate(null);
+      setError("Informe um valor válido.");
+      return;
+    }
+
+    if (sourceCurrency === targetCurrency) {
+      setExchangeRate(null);
+      setError("Selecione moedas diferentes para converter.");
       return;
     }
 
     setIsLoading(true);
-
     try {
       const data: ExchangeRateResponse = await convertCurrency(
         sourceCurrency,
@@ -50,9 +58,9 @@ export default function ConverterForm({
       );
 
       setExchangeRate(data);
-      setError(null);
     } catch (error) {
       console.error(error);
+      setExchangeRate(null);
       setError("Não foi possível obter a cotação. Tente novamente.");
     } finally {
       setIsLoading(false);
