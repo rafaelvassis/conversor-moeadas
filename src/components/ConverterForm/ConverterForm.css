@@ -97,3 +97,24 @@
     font-size:1.4rem;
     align-self: center;
 }
+
+@media (max-width: 600px) {
+
+    .converter-form {
+        padding: 1.5rem;
+    }
+
+    .converter-form__group {
+        width: 100%;
+    }
+
+    .converter-form input,
+    .converter-form select,
+    .converter-form__submit-btn {
+        width: 100%;
+    }
+
+    .converter-form__swap-btn {
+        align-self: center;
+    }
+}

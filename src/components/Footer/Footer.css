@@ -13,3 +13,16 @@
 
     color:#2563eb;
 }
+
+@media (max-width:600px){
+
+    .credits{
+
+        flex-direction:column;
+
+        gap:.5rem;
+
+        text-align:center;
+    }
+
+}
