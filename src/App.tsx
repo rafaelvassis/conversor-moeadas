@@ -13,40 +13,14 @@ function App() {
     exchangeRate,
     error,
 
-    setAmount,
-    setSourceCurrency,
-    setTargetCurrency,
+    handleAmountChange,
+    handleSourceCurrencyChange,
+    handleTargetCurrencyChange,
+    handleSwapCurrencies,
+
     setExchangeRate,
     setError,
   } = useCurrencyConverter();
-
-  function handleAmountChange(value: number) {
-    setAmount(value);
-    setExchangeRate(null);
-    setError(null);
-  }
-
-  function handleSourceCurrencyChange(currency: string) {
-    setSourceCurrency(currency);
-    setExchangeRate(null);
-    setError(null);
-  }
-
-  function handleTargetCurrencyChange(currency: string) {
-    setTargetCurrency(currency);
-    setExchangeRate(null);
-    setError(null);
-  }
-
-  function handleSwapCurrencies() {
-    setSourceCurrency((current) => {
-      setTargetCurrency(current);
-      return targetCurrency;
-    });
-
-    setExchangeRate(null);
-    setError(null);
-  }
 
   return (
     <>
