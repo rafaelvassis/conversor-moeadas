@@ -32,6 +32,12 @@ export default function ResultCard({
         <p className="label__output">Valor original</p>
         <p className="text__output">{formatCurrency(amount, sourceCurrency)}</p>
       </div>
+
+      <div>
+        <p className="label__output">Taxa de câmbio</p>
+        <p className="text__output">1 {sourceCurrency} = {formatCurrency(exchangeRate.rate, targetCurrency)}</p>
+      </div>
+
       <div>
         <p className="label__output">Valor Convertido</p>
         <p className="text__output">

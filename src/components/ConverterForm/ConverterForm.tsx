@@ -2,6 +2,7 @@ import { useState } from "react";
 import { convertCurrency } from "../../services/exchangeApi";
 import type { ExchangeRateResponse } from "../../types/ExchangeRate";
 import "./ConverterForm.css";
+import { currencies } from "../../data/currencies";
 
 type ConverterFormProps = {
   amount: number;
@@ -91,9 +92,11 @@ export default function ConverterForm({
           value={sourceCurrency}
           onChange={(e) => setSourceCurrency(e.target.value)}
         >
-          <option value="USD">USD</option>
-          <option value="BRL">BRL</option>
-          <option value="EUR">EUR</option>
+          {currencies.map(({ code, name }) => (
+            <option key={code} value={code}>
+              {code} - {name}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -114,9 +117,11 @@ export default function ConverterForm({
           value={targetCurrency}
           onChange={(e) => setTargetCurrency(e.target.value)}
         >
-          <option value="USD">USD</option>
-          <option value="BRL">BRL</option>
-          <option value="EUR">EUR</option>
+          {currencies.map(({ code, name }) => (
+            <option key={code} value={code}>
+              {code} - {name}
+            </option>
+          ))}
         </select>
       </div>
 
