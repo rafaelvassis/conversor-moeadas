@@ -38,14 +38,14 @@ export default function ConverterForm({
     e.preventDefault();
 
     setError(null);
+    setExchangeRate(null);
+
     if (amount <= 0) {
-      setExchangeRate(null);
       setError("Informe um valor válido.");
       return;
     }
 
     if (sourceCurrency === targetCurrency) {
-      setExchangeRate(null);
       setError("Selecione moedas diferentes para converter.");
       return;
     }
